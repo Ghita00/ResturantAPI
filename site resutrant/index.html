@@ -11,7 +11,7 @@
     <script >
         function callserver(){
             //https://pokeapi.co/api/v2/pokemon/ditto
-            return fetch("http://localhost:8080/api").then((res) => {
+            return fetch("http://localhost:8080/greeting").then((res) => {
                 if(res.status === 404){
                     console.table(res)
                     return undefined
@@ -25,7 +25,7 @@
             console.log(await callserver())
             let ingrediets = await callserver()
             let div = document.createElement("div")
-            div.innerHTML = ingrediets[0].name;
+            div.innerHTML = ingrediets[0].username;
             document.body.appendChild(div);
         });
     </script>

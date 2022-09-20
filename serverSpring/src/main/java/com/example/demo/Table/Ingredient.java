@@ -1,6 +1,7 @@
 package com.example.demo.Table;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table
@@ -19,7 +20,46 @@ public class Ingredient {
     private String name;
     private int quantityInBox;
     private double priceUnity;
-    @ManyToOne
-    @JoinColumn(name="idIngRec")
-    private IngredientForRecipes ingredientForRecipes;
+
+    @OneToMany(mappedBy = "ingredient")
+    Set<IngredientForRecipes> ingredientForRecipes;
+
+    public Ingredient(String idIngredient, String name, int quantityInBox, double priceUnity) {
+        this.idIngredient = idIngredient;
+        this.name = name;
+        this.quantityInBox = quantityInBox;
+        this.priceUnity = priceUnity;
+    }
+
+    public String getIdIngredient() {
+        return idIngredient;
+    }
+
+    public void setIdIngredient(String idIngredient) {
+        this.idIngredient = idIngredient;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getQuantityInBox() {
+        return quantityInBox;
+    }
+
+    public void setQuantityInBox(int quantityInBox) {
+        this.quantityInBox = quantityInBox;
+    }
+
+    public double getPriceUnity() {
+        return priceUnity;
+    }
+
+    public void setPriceUnity(double priceUnity) {
+        this.priceUnity = priceUnity;
+    }
 }
