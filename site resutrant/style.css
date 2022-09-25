@@ -1,2 +1,26 @@
+body{
+    padding: 20px;
+}
 
+.form{
+    width: 250px;
+    height: auto;
+}
 
+.btn{
+    border-radius: 0%;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.reduceDX{
+    width: 60%;
+}
+
+.reduceSX{
+    width: auto;
+}

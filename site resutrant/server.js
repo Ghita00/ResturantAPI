@@ -56,6 +56,4 @@ router.get("/newRecipes", function(req, res){
   res.sendFile(path.join(__dirname+'/newRecipes.html'));
 })
 
-
-
 console.log('Running at Port 3000');

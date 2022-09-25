@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Recipies</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg bg-light center">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">ResturantAPI</a>
+            <a class="navbar-brand" href="/home/giorgio">ResturantAPI</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -32,7 +33,7 @@
     </nav>
 
     <!--Form-->
-    <form action="" method="post">
+    <form action="" method="post" class="form center">
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" name="name" class="form-control" id="name" placeholder="Name of Ingredient">
@@ -42,10 +43,52 @@
             <label for="name">Time(hour)</label>
             <input type="text" name="time" class="form-control" id="name" placeholder="Hour for cooking">
         </div>
-        <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <br >
+        
+        <div class="mb-3" id="ingredients" >
+            <div id="base" class="singleIngredient">
+                <h3>Ingredient 1</h3>
+                <select name="Ingredient1" id="Ingredient1" >
+                    <option value="pasta">Pasta</option>
+                    <option value="tomato">Tomato</option>
+                    <option value="tomato">Cheese</option>
+                </select><br><br>
+                <h4>Quantity</h4>
+                <input type="range" class="form-range reduceDX" name="Quantity1" id="Quantity1" min="0" max="1000" step="25" value="0" oninput="this.nextElementSibling.value = this.value">
+                <output class="reduceSX">0</output>gr
+                <br>
+            </div>
+        </div>
+        <div id="addIngredient" class="btn btn-success">Add Ingredient</div>
+        <button type="submit" class="btn btn-primary">Submit</button>  
     </form>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+
+    <script>
+        let b = document.getElementById("addIngredient")
+        let i = 2;
+        b.addEventListener("click", (event) => {
+            let container = document.getElementById("ingredients")
+            let ing = document.getElementById("base")
+            let newIng = ing.cloneNode(true);
+            ing.removeAttribute("id");
+            console.log(newIng.childNodes)
+            //label
+            newIng.childNodes[1].innerHTML = "Ingredient " + i
+            //select
+            newIng.childNodes[3].id = "Ingredient" + i
+            newIng.childNodes[3].name = "Ingredient" + i
+            container.appendChild(document.createElement("br"))
+            container.appendChild(newIng)
+            //range
+            newIng.childNodes[9].name = "Quantity" + i
+            newIng.childNodes[9].id = "Quantity" + i
+            newIng.childNodes[9].value = "0"
+
+            i++;
+        })
+    </script>
 </body>
 </html>
